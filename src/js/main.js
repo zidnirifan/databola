@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   M.Sidenav.init(document.querySelectorAll(".sidenav"));
 });
 
-document.querySelectorAll(".nav-desktop li a, .brand-logo").forEach((elm) => {
+document.querySelectorAll(".nav-desktop li i, #nav-mobile i").forEach((elm) => {
   elm.addEventListener("click", (event) => {
-    page = event.target.getAttribute("href").substr(1);
+    page = event.target.parentElement.getAttribute("href").substr(1);
     loadPage(page);
   });
 });
