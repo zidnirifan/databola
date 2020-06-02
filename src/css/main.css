@@ -7,6 +7,10 @@
   position: sticky;
 }
 
+#standing-table td img {
+  width: 100%;
+}
+
 #standing-table thead tr th:nth-child(1),
 #standing-table thead tr th:nth-child(3),
 #standing-table thead tr th:nth-child(4),
