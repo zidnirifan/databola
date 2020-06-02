@@ -42,8 +42,36 @@ nav .brand-logo.center {
 .match-item {
   font-size: 1.2em;
   border-radius: 10px;
-  margin-top: 15px;
   line-height: 1.2em;
   padding-top: 5px !important;
   padding-bottom: 5px !important;
+}
+
+.match-container {
+  padding: 10px !important;
+  padding-top: 5px !important;
+}
+
+.match-container.row {
+  margin-bottom: 0 !important;
+}
+
+.match-list {
+  padding-top: 10px;
+}
+
+.team-item {
+  margin-bottom: 10px;
+}
+
+.team-item img {
+  width: 100%;
+}
+
+.team-item h6 {
+  line-height: 1em;
+}
+
+.team-list {
+  padding-top: 15px;
 }
