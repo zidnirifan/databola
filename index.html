@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/css/materialize.min.css" />
+    <link rel="stylesheet" href="src/css/icons.css" />
+    <link rel="stylesheet" href="src/css/main.css" />
+  </head>
+  <body>
+    <nav class="green darken-3 hide-on-med-and-down">
+      <div class="container">
+        <a href="#" class="brand-logo">Data Bola</a>
+        <ul class="right">
+          <li>
+            <a class="dropdown-trigger" href="#!" data-target="dropdown1"
+              >Champions League<i class="material-icons right"
+                >arrow_drop_down</i
+              ></a
+            >
+          </li>
+          <li>
+            <a href="sass.html" title="Standings"
+              ><i class="material-icons">equalizer</i></a
+            >
+          </li>
+          <li>
+            <a href="badges.html" title="Match"
+              ><i class="material-icons">event</i></a
+            >
+          </li>
+          <li>
+            <a href="collapsible.html" title="Teams"
+              ><i class="material-icons">subject</i></a
+            >
+          </li>
+          <li>
+            <a href="collapsible.html" title="Saved"
+              ><i class="material-icons">save</i></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">Champions League</a></li>
+      <li><a href="#!">Serie A</a></li>
+      <li><a href="#!">Premiere League</a></li>
+      <li><a href="#!">Primera Division</a></li>
+    </ul>
+
+    <!-- Navbar Mobile -->
+
+    <nav
+      id="nav-mobile"
+      class="white no-shadow navbar-fixed hide-on-large-only"
+    >
+      <div class="container row">
+        <div class="col s3 center-align">
+          <a href="sass.html" title="Standings"
+            ><i class="material-icons green-text text-darken-3">equalizer</i></a
+          >
+        </div>
+        <div class="col s3 center-align">
+          <a href="sass.html" title="Standings"
+            ><i class="material-icons grey-text text-darken-3">event</i></a
+          >
+        </div>
+        <div class="col s3 center-align">
+          <a href="sass.html" title="Standings"
+            ><i class="material-icons grey-text text-darken-3">subject</i></a
+          >
+        </div>
+        <div class="col s3 center-align">
+          <a href="sass.html" title="Standings"
+            ><i class="material-icons grey-text text-darken-3">save</i></a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div id="body-content" class="container">
+      <table id="standing-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th colspan="2">Club</th>
+            <th>M</th>
+            <th>W</th>
+            <th>L</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/de/a/aa/Fc_barcelona.svg"
+                width="40px"
+              />
+            </td>
+            <td>Barcelona FC</td>
+            <td>28</td>
+            <td>20</td>
+            <td>4</td>
+            <td>64</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/de/a/aa/Fc_barcelona.svg"
+                width="40px"
+              />
+            </td>
+            <td>Barcelona FC</td>
+            <td>28</td>
+            <td>20</td>
+            <td>4</td>
+            <td>64</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="lib/js/materialize.min.js"></script>
+    <script src="src/js/main.js"></script>
+  </body>
+</html>

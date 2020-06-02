@@ -1,0 +1,16 @@
+#nav-mobile {
+  position: fixed !important;
+  bottom: 0;
+}
+
+#standing-table thead tr th:nth-child(1),
+#standing-table thead tr th:nth-child(3),
+#standing-table thead tr th:nth-child(4),
+#standing-table thead tr th:nth-child(5),
+#standing-table thead tr th:nth-child(6) {
+  width: 4%;
+}
+
+#standing-table tbody tr td:nth-child(2) {
+  width: 50px;
+}
