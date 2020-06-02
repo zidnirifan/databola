@@ -14,3 +14,19 @@
 #standing-table tbody tr td:nth-child(2) {
   width: 50px;
 }
+
+nav .brand-logo.center {
+  width: 100%;
+}
+
+#top-bar-mobile .brand-logo {
+  font-size: 1.5em;
+}
+
+.dropdown-trigger {
+  font-size: 1.3em;
+}
+
+.sidenav {
+  width: 250px !important;
+}
