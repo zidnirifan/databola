@@ -3,6 +3,10 @@
   bottom: 0;
 }
 
+#standing-table thead {
+  position: sticky;
+}
+
 #standing-table thead tr th:nth-child(1),
 #standing-table thead tr th:nth-child(3),
 #standing-table thead tr th:nth-child(4),
@@ -13,6 +17,10 @@
 
 #standing-table tbody tr td:nth-child(2) {
   width: 50px;
+}
+
+#standing-table thead tr th {
+  font-size: 1.2em;
 }
 
 nav .brand-logo.center {
@@ -29,4 +37,13 @@ nav .brand-logo.center {
 
 .sidenav {
   width: 250px !important;
+}
+
+.match-item {
+  font-size: 1.2em;
+  border-radius: 10px;
+  margin-top: 15px;
+  line-height: 1.2em;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
