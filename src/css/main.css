@@ -44,7 +44,7 @@ nav .brand-logo.center {
 }
 
 .match-item {
-  font-size: 1.2em;
+  font-size: 1.15em;
   border-radius: 10px;
   line-height: 1.2em;
   padding-top: 5px !important;
@@ -64,6 +64,10 @@ nav .brand-logo.center {
   padding-top: 10px;
 }
 
+.match-item .date {
+  font-size: 0.8em;
+}
+
 .team-item {
   margin-bottom: 10px;
 }
@@ -78,4 +82,14 @@ nav .brand-logo.center {
 
 .team-list {
   padding-top: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .match-item {
+    font-size: 1em;
+  }
+
+  .match-item .date {
+    font-size: 0.9em;
+  }
 }
