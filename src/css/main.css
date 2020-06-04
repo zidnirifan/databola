@@ -92,6 +92,14 @@ nav .brand-logo.center {
   padding-top: 25px;
 }
 
+.menu-mobile {
+  color: #424242;
+}
+
+.active {
+  color: #2e7d32 !important;
+}
+
 @media screen and (max-width: 600px) {
   .match-item {
     font-size: 1em;

@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.querySelectorAll(".menu-mobile").forEach((e) => {
+  e.addEventListener("click", () => {
+    document.querySelector(".active").classList.remove("active");
+    e.classList.toggle("active");
+  });
+});
+
 // document.querySelectorAll(".nav-desktop li i, #nav-mobile i").forEach((elm) => {
 //   elm.addEventListener("click", (event) => {
 //     page = event.target.parentElement.getAttribute("href").substr(1);
