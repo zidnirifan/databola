@@ -6,6 +6,8 @@ if (page === "") {
   document.addEventListener("DOMContentLoaded", () => standings());
 } else if (page === "match") {
   document.addEventListener("DOMContentLoaded", () => match());
+} else if (page === "teams") {
+  document.addEventListener("DOMContentLoaded", () => teams());
 }
 document.querySelectorAll(".standings").forEach((elm) => {
   elm.addEventListener("click", () => standings());
@@ -13,6 +15,15 @@ document.querySelectorAll(".standings").forEach((elm) => {
 document.querySelectorAll(".match").forEach((elm) => {
   elm.addEventListener("click", () => match());
 });
+document.querySelectorAll(".teams").forEach((elm) => {
+  elm.addEventListener("click", () => teams());
+});
+
+const standings = () =>
+  requestPage(standingsPage, ".standings-list", "standings", resultsStandings);
+const match = () =>
+  requestPage(matchPage, ".match-list", "matches", resultsMatch);
+const teams = () => requestPage(teamsPage, ".team-list", "teams", resultsTeams);
 
 const resultsStandings = (results) => {
   return `<tr class="standing-item">
@@ -49,6 +60,36 @@ const resultsMatch = (results) => {
   </div>`;
 };
 
+const standingsPage = `<table id="standing-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th colspan="2">Club</th>
+        <th>M</th>
+        <th class="green-text text-darken-2">W</th>
+        <th class="red-text text-darken-2">L</th>
+        <th class="amber-text text-darken-3">Pts</th>
+      </tr>
+    </thead>
+    <tbody class="standings-list"></tbody>
+  </table>`;
+
+const matchPage = `<div class="row match-list"></div>`;
+
+const resultsTeams = (results) => {
+  return `<div class="team-item col l2 m3 s4">
+            <div class="team-image center-align">
+              <img
+                src="${results.crestUrl}"
+                alt="${results.name}"
+              />
+            </div>
+            <h6 class="center-align">${results.name}</h6>
+          </div>`;
+};
+
+const teamsPage = `<div class="row team-list"><div>`;
+
 const requestPage = (parentSelector, selector, urlKey, results) => {
   document.querySelector("#body-content").innerHTML = parentSelector;
 
@@ -64,6 +105,8 @@ const requestPage = (parentSelector, selector, urlKey, results) => {
         items = response.matches;
       } else if (urlKey === "standings") {
         items = response.standings[0].table;
+      } else if (urlKey === "teams") {
+        items = response.teams;
       }
       let card = "";
       items.forEach(function (e) {
@@ -73,23 +116,3 @@ const requestPage = (parentSelector, selector, urlKey, results) => {
       standingsList.innerHTML = card;
     });
 };
-
-const standingsPage = `<table id="standing-table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th colspan="2">Club</th>
-                      <th>M</th>
-                      <th class="green-text text-darken-2">W</th>
-                      <th class="red-text text-darken-2">L</th>
-                      <th class="amber-text text-darken-3">Pts</th>
-                    </tr>
-                  </thead>
-                  <tbody class="standings-list"></tbody>
-                </table>`;
-
-const matchPage = `<div class="row match-list"></div>`;
-const standings = () =>
-  requestPage(standingsPage, ".standings-list", "standings", resultsStandings);
-const match = () =>
-  requestPage(matchPage, ".match-list", "matches", resultsMatch);

@@ -3,7 +3,9 @@
   bottom: 0;
 }
 
-#standing-table {
+#standing-table,
+.match-list,
+.team-list {
   margin-bottom: 70px;
 }
 
@@ -70,10 +72,16 @@ nav .brand-logo.center {
 
 .team-item {
   margin-bottom: 10px;
+  height: 180px;
 }
 
 .team-item img {
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.team-image {
+  height: 100px;
 }
 
 .team-item h6 {
@@ -81,7 +89,7 @@ nav .brand-logo.center {
 }
 
 .team-list {
-  padding-top: 15px;
+  padding-top: 25px;
 }
 
 @media screen and (max-width: 600px) {
@@ -91,5 +99,11 @@ nav .brand-logo.center {
 
   .match-item .date {
     font-size: 0.9em;
+  }
+  .team-item h6 {
+    line-height: 0.9em;
+  }
+  .team-item {
+    height: 160px;
   }
 }
