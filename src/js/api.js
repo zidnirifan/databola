@@ -22,6 +22,24 @@ document.querySelectorAll(".teams").forEach((elm) => {
   elm.addEventListener("click", () => teams.request());
 });
 
+document.querySelectorAll("#dropdown1 a").forEach(function (elm) {
+  elm.addEventListener("click", function () {
+    document.querySelector(".dropdown-competition").innerHTML = this.innerHTML;
+    competitionId = this.dataset.idcompetition;
+    if (page === "") {
+      standings.request();
+    } else if (page === "standings") {
+      standings.request();
+    } else if (page === "match") {
+      match.request();
+    } else if (page === "teams") {
+      teams.request();
+    }
+  });
+});
+
+let competitionId = "PL";
+
 const standings = {
   results: (results) => {
     return `<tr class="standing-item">
@@ -29,6 +47,7 @@ const standings = {
       <td>
         <img
         src="${results.team.crestUrl}"
+        alt="${results.team.name} logo"
         />
         </td>
         <td>${results.team.name}</td>
@@ -52,7 +71,13 @@ const standings = {
       <tbody class="standings-list"></tbody>
     </table>`,
   request() {
-    requestPage(this.page, ".standings-list", "standings", this.results);
+    requestPage(
+      this.page,
+      ".standings-list",
+      "standings",
+      this.results,
+      competitionId
+    );
   },
 };
 
@@ -77,7 +102,13 @@ const match = {
   },
   page: `<div class="row match-list"></div>`,
   request() {
-    requestPage(this.page, ".match-list", "matches", this.results);
+    requestPage(
+      this.page,
+      ".match-list",
+      "matches",
+      this.results,
+      competitionId
+    );
   },
 };
 
@@ -87,7 +118,7 @@ const teams = {
             <div class="team-image center-align">
               <img
                 src="${results.crestUrl}"
-                alt="${results.name}"
+                alt="${results.name} logo"
               />
             </div>
             <h6 class="center-align">${results.name}</h6>
@@ -95,14 +126,14 @@ const teams = {
   },
   page: `<div class="row team-list"><div>`,
   request() {
-    requestPage(this.page, ".team-list", "teams", this.results);
+    requestPage(this.page, ".team-list", "teams", this.results, competitionId);
   },
 };
 
-const requestPage = (parentSelector, selector, urlKey, results) => {
+const requestPage = (parentSelector, selector, urlKey, results, id) => {
   document.querySelector("#body-content").innerHTML = parentSelector;
 
-  fetch(`https://api.football-data.org/v2/competitions/2021/${urlKey}`, {
+  fetch(`https://api.football-data.org/v2/competitions/${id}/${urlKey}`, {
     headers: {
       "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
     },

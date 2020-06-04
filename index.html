@@ -15,9 +15,8 @@
         <ul class="nav-desktop right">
           <li>
             <a class="dropdown-trigger" data-target="dropdown1"
-              >Champions League<i class="material-icons right"
-                >arrow_drop_down</i
-              ></a
+              ><span class="dropdown-competition">Premiere League</span
+              ><i class="material-icons right">arrow_drop_down</i></a
             >
           </li>
           <li>
@@ -45,10 +44,10 @@
     </nav>
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a data-id="CL">Champions League</a></li>
-      <li><a data-id="SA">Serie A</a></li>
-      <li><a data-id="PL">Premiere League</a></li>
-      <li><a data-id="PD">Primera Division</a></li>
+      <li><a data-idCompetition="PL">Premiere League</a></li>
+      <li><a data-idCompetition="SA">Serie A</a></li>
+      <li><a data-idCompetition="CL">Champions League</a></li>
+      <li><a data-idCompetition="PD">Primera Division</a></li>
     </ul>
 
     <!-- Navbar Mobile -->
@@ -99,10 +98,10 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a data-id="CL">Champions League</a></li>
-      <li><a data-id="SA">Serie A</a></li>
-      <li><a data-id="PL">Premiere League</a></li>
-      <li><a data-id="PD">Primera Division</a></li>
+      <li><a data-idCompetition="CL">Champions League</a></li>
+      <li><a data-idCompetition="SA">Serie A</a></li>
+      <li><a data-idCompetition="PL">Premiere League</a></li>
+      <li><a data-idCompetition="PD">Primera Division</a></li>
     </ul>
 
     <div id="body-content" class="container"></div>
