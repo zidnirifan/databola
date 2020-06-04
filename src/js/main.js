@@ -11,7 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
 document.querySelectorAll(".menu-mobile").forEach((e) => {
   e.addEventListener("click", () => {
     document.querySelector(".active").classList.remove("active");
-    e.classList.toggle("active");
+    e.classList.add("active");
+  });
+});
+
+document.querySelectorAll(".menu-desktop").forEach((e) => {
+  e.addEventListener("click", () => {
+    document
+      .querySelector(".active-desktop")
+      .classList.remove("active-desktop");
+    e.parentElement.classList.add("active-desktop");
   });
 });
 
