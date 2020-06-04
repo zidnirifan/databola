@@ -22,10 +22,14 @@ document.querySelectorAll(".teams").forEach((elm) => {
   elm.addEventListener("click", () => teams.request());
 });
 
-document.querySelectorAll("#dropdown1 a").forEach(function (elm) {
+document.querySelectorAll("#dropdown1 a, .sidenav a").forEach(function (elm) {
   elm.addEventListener("click", function () {
     document.querySelector(".dropdown-competition").innerHTML = this.innerHTML;
+    document.querySelector(
+      "#top-bar-mobile .brand-logo"
+    ).innerHTML = this.innerHTML;
     competitionId = this.dataset.idcompetition;
+    const page = window.location.hash.substr(1);
     if (page === "") {
       standings.request();
     } else if (page === "standings") {

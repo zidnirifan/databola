@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
   M.Dropdown.init(document.querySelectorAll(".dropdown-trigger"));
 
   M.Sidenav.init(document.querySelectorAll(".sidenav"));
+  const instance = M.Sidenav.getInstance(document.querySelector(".sidenav"));
+  document.querySelector(".sidenav").addEventListener("click", () => {
+    instance.close();
+  });
 });
 
 // document.querySelectorAll(".nav-desktop li i, #nav-mobile i").forEach((elm) => {
