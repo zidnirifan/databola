@@ -54,4 +54,3 @@ self.addEventListener("activate", (event) => {
     })
   );
 });
-// anjay
