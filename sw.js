@@ -5,6 +5,7 @@ const urlsToCache = [
   "/src/css/main.css",
   "/src/js/main.js",
   "/src/js/api.js",
+  "/src/js/register-sw.js",
   "/lib/css/materialize.min.css",
   "/lib/js/materialize.min.js",
   "/assets/icons/Material-Icons.woff2",
