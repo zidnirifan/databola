@@ -24,11 +24,10 @@ self.addEventListener("fetch", (event) => {
 
   if (event.request.url.indexOf(baseUrl) > -1) {
     event.respondWith(
-      caches.open(CACHE_NAME).then((cache) => {
-        return fetch(event.request).then((response) => {
-          cache.put(event.request.url, response.clone());
-          return response;
-        });
+      caches.open(CACHE_NAME).then(async (cache) => {
+        const response = await fetch(event.request);
+        cache.put(event.request.url, response.clone());
+        return response;
       })
     );
   } else {
