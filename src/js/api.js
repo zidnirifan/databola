@@ -69,7 +69,7 @@ const standings = {
           <th>M</th>
           <th class="green-text text-darken-2">W</th>
           <th class="red-text text-darken-2">L</th>
-          <th class="amber-text text-darken-3">Pts</th>
+          <th class="light-blue-text text-darken-3">Pts</th>
         </tr>
       </thead>
       <tbody class="standings-list"></tbody>
