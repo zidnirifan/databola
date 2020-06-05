@@ -134,10 +134,12 @@ const teams = {
   },
 };
 
+const baseUrl = "https://api.football-data.org/v2";
+
 const requestPage = (parentSelector, selector, urlKey, results, id) => {
   document.querySelector("#body-content").innerHTML = parentSelector;
 
-  fetch(`https://api.football-data.org/v2/competitions/${id}/${urlKey}`, {
+  fetch(`${baseUrl}/competitions/${id}/${urlKey}`, {
     headers: {
       "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
     },
@@ -156,7 +158,7 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
       items.forEach(function (e) {
         card += results(e);
       });
-      const standingsList = document.querySelector(selector);
-      standingsList.innerHTML = card;
+      const itemList = document.querySelector(selector);
+      itemList.innerHTML = card;
     });
 };

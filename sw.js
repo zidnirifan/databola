@@ -1,4 +1,4 @@
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "databola-v1";
 const urlsToCache = [
   "/",
   "/index.html",
