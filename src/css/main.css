@@ -104,6 +104,31 @@ nav .brand-logo.center {
   color: #2e7d32 !important;
 }
 
+.team-image img {
+  width: 100%;
+}
+
+.head-team-details,
+.team-image {
+  border: 1px solid red;
+}
+
+td:first-child {
+  font-weight: bold;
+}
+
+.club-title:hover {
+  color: #2e7d32 !important;
+}
+
+.no-shadow {
+  box-shadow: none;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
 @media screen and (max-width: 600px) {
   .match-item {
     font-size: 1em;
