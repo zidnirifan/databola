@@ -144,15 +144,15 @@ const match = {
 
 const teams = {
   results: (results) => {
-    return `<div class="team-item col l2 m3 s4">
-            <div class="team-image center-align">
-              <img
-                src="${results.crestUrl}"
-                alt="${results.name} logo"
-              />
-            </div>
-            <h6 class="center-align">${results.name}</h6>
-          </div>`;
+    return `<div class="team-item col l2 m3 s4" data-idTeam="${results.id}">
+              <div class="team-image center-align">
+                <img
+                  src="${results.crestUrl}"
+                  alt="${results.name} logo"
+                />
+              </div>
+              <h6 class="center-align">${results.name}</h6>
+            </div>`;
   },
   page: `<div class="row team-list"><div>`,
   request() {

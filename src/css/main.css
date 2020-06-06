@@ -5,7 +5,8 @@
 
 #standing-table,
 .match-list,
-.team-list {
+.team-list,
+.squads {
   margin-bottom: 70px;
 }
 
@@ -108,12 +109,7 @@ nav .brand-logo.center {
   width: 100%;
 }
 
-.head-team-details,
-.team-image {
-  border: 1px solid red;
-}
-
-td:first-child {
+.team-info td:first-child {
   font-weight: bold;
 }
 
@@ -142,5 +138,9 @@ td:first-child {
   }
   .team-item {
     height: 160px;
+  }
+
+  .team-info td:first-child {
+    width: 100px !important;
   }
 }
