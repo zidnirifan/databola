@@ -2,6 +2,7 @@ const CACHE_NAME = "databola-v1";
 const urlsToCache = [
   "/",
   "/index.html",
+  "/manifest.json",
   "/src/css/main.css",
   "/src/js/main.js",
   "/src/js/api.js",
@@ -10,6 +11,14 @@ const urlsToCache = [
   "/lib/js/materialize.min.js",
   "/assets/icons/Material-Icons.woff2",
   "/assets/icons/icons.css",
+  "assets/icons/icon-72.png",
+  "assets/icons/icon-96.png",
+  "assets/icons/icon-128.png",
+  "assets/icons/icon-144.png",
+  "assets/icons/icon-192.png",
+  "assets/icons/icon-256.png",
+  "assets/icons/icon-384.png",
+  "assets/icons/icon-512.png",
 ];
 
 self.addEventListener("install", (event) => {
