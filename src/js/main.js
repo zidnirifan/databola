@@ -47,6 +47,9 @@ document.querySelectorAll(".match").forEach((elm) => {
 document.querySelectorAll(".teams").forEach((elm) => {
   elm.addEventListener("click", () => teams.request());
 });
+document.querySelectorAll(".saved").forEach((elm) => {
+  elm.addEventListener("click", () => getSavedTeams());
+});
 
 document.querySelectorAll("#dropdown1 a, .sidenav a").forEach(function (elm) {
   elm.addEventListener("click", function () {

@@ -2,6 +2,7 @@ const baseUrl = "https://api.football-data.org/v2";
 
 const requestPage = (parentSelector, selector, urlKey, results, id) => {
   document.querySelector("#body-content").innerHTML = parentSelector;
+  document.querySelector(".fixed-action-btn").innerHTML = "";
 
   if ("caches" in window) {
     caches
@@ -63,12 +64,11 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
             ).innerHTML = `<a class="btn-floating btn-large red" id="save">
             <i class="large material-icons">save</i>
             </a>`;
-            let item = getTeamDetails(this);
-            var save = document.getElementById("save");
+            const item = getTeamDetails(this);
+            const save = document.getElementById("save");
             save.addEventListener("click", function () {
-              console.log("Tombol FAB di klik.");
-              item.then(function (article) {
-                saveForLater(article);
+              item.then(function (team) {
+                saveForLater(team);
               });
             });
           });
@@ -78,6 +78,7 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
 };
 
 const getTeamDetails = (btn) => {
+  document.querySelector("#body-content").innerHTML = "";
   return new Promise(function (resolve, reject) {
     const idTeam = btn.dataset.idteam;
     window.location.hash += `/${idTeam}`;
@@ -192,4 +193,52 @@ const details = (response) => {
               </div>
             </div>
           </div>`;
+};
+
+function getSavedTeams() {
+  document.querySelector(
+    "#body-content"
+  ).innerHTML = `<div class="row team-list"><div>`;
+  document.querySelector(".fixed-action-btn").innerHTML = "";
+  getAll().then(function (response) {
+    const items = response;
+    let card = "";
+    items.forEach(function (response) {
+      card += `<div class="team-item col l2 m3 s4" data-idTeam="${response.id}">
+      <div class="team-image center-align">
+        <img
+          src="${response.crestUrl}"
+          alt="${response.name} logo"
+        />
+      </div>
+      <h6 class="center-align">${response.name}</h6>
+    </div>`;
+    });
+    const itemList = document.querySelector(".team-list");
+    itemList.innerHTML = card;
+    getSavedTeamsDetails(".team-item");
+  });
+}
+
+const getSavedTeamsDetails = (selector) => {
+  document.querySelectorAll(selector).forEach((e) => {
+    e.addEventListener("click", function () {
+      const idTeam = Number(this.dataset.idteam);
+      getById(idTeam).then(function (response) {
+        const teamDetails = details(response);
+
+        document.querySelector("#body-content").innerHTML = teamDetails;
+
+        let card = "";
+        response.squad.forEach((player) => {
+          card += `<tr>
+                      <td>${player.name || "-"}</td>
+                      <td>${player.position || "-"}</td>
+                      <td>${player.nationality || "-"}</td>
+                    </tr>`;
+        });
+        document.querySelector(".player-list").innerHTML = card;
+      });
+    });
+  });
 };
