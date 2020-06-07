@@ -23,6 +23,10 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
             });
             const itemList = document.querySelector(selector);
             itemList.innerHTML = card;
+
+            if (urlKey === "teams") {
+              getTeamDetails(".team-item");
+            }
           });
         }
       });
@@ -51,24 +55,83 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
       itemList.innerHTML = card;
 
       if (urlKey === "teams") {
-        getTeamDetails(".team-item");
+        const button = document.querySelectorAll(".team-item");
+        button.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelector(
+              ".fixed-action-btn"
+            ).innerHTML = `<a class="btn-floating btn-large red" id="save">
+            <i class="large material-icons">save</i>
+            </a>`;
+            let item = getTeamDetails(this);
+            var save = document.getElementById("save");
+            save.addEventListener("click", function () {
+              console.log("Tombol FAB di klik.");
+              item.then(function (article) {
+                saveForLater(article);
+              });
+            });
+          });
+        });
       }
     });
 };
 
-const getTeamDetails = (selector) => {
-  const button = document.querySelectorAll(selector);
-  button.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const idTeam = this.dataset.idteam;
-      fetch(`https://api.football-data.org/v2/teams/${idTeam}`, {
-        headers: {
-          "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
-        },
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          const teamDetails = `<div class="row">
+const getTeamDetails = (btn) => {
+  return new Promise(function (resolve, reject) {
+    const idTeam = btn.dataset.idteam;
+    window.location.hash += `/${idTeam}`;
+
+    if ("caches" in window) {
+      caches.match(`${baseUrl}/teams/${idTeam}`).then(function (response) {
+        if (response) {
+          response.json().then(function (response) {
+            const teamDetails = details(response);
+
+            document.querySelector("#body-content").innerHTML = teamDetails;
+
+            let card = "";
+            response.squad.forEach((player) => {
+              card += `<tr>
+                      <td>${player.name || "-"}</td>
+                      <td>${player.position || "-"}</td>
+                      <td>${player.nationality || "-"}</td>
+                    </tr>`;
+            });
+            document.querySelector(".player-list").innerHTML = card;
+            resolve(response);
+          });
+        }
+      });
+    }
+
+    fetch(`${baseUrl}/teams/${idTeam}`, {
+      headers: {
+        "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        const teamDetails = details(response);
+
+        document.querySelector("#body-content").innerHTML = teamDetails;
+
+        let card = "";
+        response.squad.forEach((player) => {
+          card += `<tr>
+                  <td>${player.name || "-"}</td>
+                  <td>${player.position || "-"}</td>
+                  <td>${player.nationality || "-"}</td>
+                </tr>`;
+        });
+        document.querySelector(".player-list").innerHTML = card;
+        resolve(response);
+      });
+  });
+};
+
+const details = (response) => {
+  return `<div class="row">
             <div class="col s12">
               <div class="card no-shadow row">
                 <div class="card-image col s12 m5">
@@ -129,19 +192,4 @@ const getTeamDetails = (selector) => {
               </div>
             </div>
           </div>`;
-
-          document.querySelector("#body-content").innerHTML = teamDetails;
-
-          let card = "";
-          response.squad.forEach((player) => {
-            card += `<tr>
-            <td>${player.name || "-"}</td>
-            <td>${player.position || "-"}</td>
-            <td>${player.nationality || "-"}</td>
-          </tr>`;
-          });
-          document.querySelector(".player-list").innerHTML = card;
-        });
-    });
-  });
 };

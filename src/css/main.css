@@ -3,6 +3,18 @@
   bottom: 0;
 }
 
+.nav-desktop i.material-icons {
+  font-size: 33px !important;
+}
+
+.menu-desktop {
+  height: 65px !important;
+}
+
+.fixed-action-btn {
+  bottom: 60px !important;
+}
+
 #standing-table,
 .match-list,
 .team-list,
