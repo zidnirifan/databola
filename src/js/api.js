@@ -26,7 +26,23 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
             itemList.innerHTML = card;
 
             if (urlKey === "teams") {
-              getTeamDetails(".team-item");
+              const button = document.querySelectorAll(".team-item");
+              button.forEach((btn) => {
+                btn.addEventListener("click", function () {
+                  document.querySelector(
+                    ".fixed-action-btn"
+                  ).innerHTML = `<a class="btn-floating btn-large red" id="save">
+                  <i class="large material-icons">save</i>
+                  </a>`;
+                  const item = getTeamDetails(this);
+                  const save = document.getElementById("save");
+                  save.addEventListener("click", function () {
+                    item.then(function (team) {
+                      saveForLater(team);
+                    });
+                  });
+                });
+              });
             }
           });
         }
