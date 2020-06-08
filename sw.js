@@ -68,14 +68,14 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("push", function (event) {
-  const body;
+  let body;
   if (event.data) {
     body = event.data.text();
   } else {
     body = "Push message no payload";
   }
   const options = {
-    body: body,
+    body,
     icon: "assets/icons/icon-256.png",
     vibrate: [100, 50, 100],
     data: {
