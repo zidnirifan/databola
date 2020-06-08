@@ -153,7 +153,10 @@ const details = (response) => {
               <div class="card no-shadow row">
                 <div class="card-image col s12 m5">
                   <img
-                    src="${response.crestUrl || "-"}" 
+                    src="${response.crestUrl.replace(
+                      /^http:\/\//i,
+                      "https://"
+                    )}" 
                     alt="${response.name || "-"}"
                   />
                 </div>

@@ -79,7 +79,7 @@ const standings = {
       <td>${results.position}</td>
       <td>
         <img
-        src="${results.team.crestUrl}"
+        src="${results.team.crestUrl.replace(/^http:\/\//i, "https://")}"
         alt="${results.team.name} logo"
         />
         </td>
@@ -150,7 +150,7 @@ const teams = {
     return `<div class="team-item col l2 m3 s4" data-idTeam="${results.id}">
               <div class="team-image center-align">
                 <img
-                  src="${results.crestUrl}"
+                  src="${results.crestUrl.replace(/^http:\/\//i, "https://")}"
                   alt="${results.name} logo"
                 />
               </div>
