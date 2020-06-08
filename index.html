@@ -17,103 +17,17 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <nav class="green darken-3 hide-on-med-and-down">
-      <div class="container">
-        <a href="#standings" class="brand-logo">Data Bola</a>
-        <ul class="nav-desktop right">
-          <li>
-            <a class="dropdown-trigger" data-target="dropdown1"
-              ><span class="dropdown-competition">Premiere League</span
-              ><i class="material-icons right">arrow_drop_down</i></a
-            >
-          </li>
-          <li>
-            <a href="#standings" title="Standings" class="active-desktop"
-              ><i class="menu-desktop standings material-icons">equalizer</i></a
-            >
-          </li>
-          <li>
-            <a href="#match" title="Match"
-              ><i class="menu-desktop match material-icons">event</i></a
-            >
-          </li>
-          <li>
-            <a href="#teams" title="Teams"
-              ><i class="menu-desktop teams material-icons">subject</i></a
-            >
-          </li>
-          <li>
-            <a href="#saved" title="Saved"
-              ><i class="menu-desktop saved material-icons">save</i></a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a data-idCompetition="PL">Premiere League</a></li>
-      <li><a data-idCompetition="SA">Serie A</a></li>
-      <li><a data-idCompetition="CL">Champions League</a></li>
-      <li><a data-idCompetition="PD">Primera Division</a></li>
-      <li><a data-idCompetition="FL1">France Ligue 1</a></li>
-    </ul>
-
-    <!-- Navbar Mobile -->
-
-    <nav
-      id="nav-mobile"
-      class="white no-shadow navbar-fixed hide-on-large-only"
-    >
-      <div class="container row">
-        <div class="col s3 center-align">
-          <a href="#standings" title="Standings"
-            ><i class="menu-mobile standings material-icons active"
-              >equalizer</i
-            ></a
-          >
-        </div>
-        <div class="col s3 center-align">
-          <a href="#match" title="Match"
-            ><i class="menu-mobile match material-icons">event</i></a
-          >
-        </div>
-        <div class="col s3 center-align">
-          <a href="#teams" title="Teams"
-            ><i class="menu-mobile teams material-icons">subject</i></a
-          >
-        </div>
-        <div class="col s3 center-align">
-          <a href="#saved" title="Saved"
-            ><i class="menu-mobile saved material-icons">save</i></a
-          >
-        </div>
-      </div>
-    </nav>
-
-    <!-- Top nav mobile -->
-
-    <nav id="top-bar-mobile" class="hide-on-large-only green darken-3">
-      <div class="nav-wrapper container">
-        <a data-target="mobile-demo" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
-        >
-        <a class="brand-logo center">Premiere League</a>
-      </div>
-    </nav>
-
-    <ul class="sidenav" id="mobile-demo">
-      <li><a data-idCompetition="PL">Premiere League</a></li>
-      <li><a data-idCompetition="SA">Serie A</a></li>
-      <li><a data-idCompetition="CL">Champions League</a></li>
-      <li><a data-idCompetition="PD">Primera Division</a></li>
-      <li><a data-idCompetition="FL1">France Ligue 1</a></li>
-    </ul>
+    <nav-desktop></nav-desktop>
+    <nav-mobile></nav-mobile>
+    <topbar-mobile></topbar-mobile>
 
     <div id="body-content" class="container"></div>
     <div class="fixed-action-btn"></div>
 
     <script src="src/js/register-sw.js"></script>
+    <script src="src/js/component/nav-desktop.js"></script>
+    <script src="src/js/component/nav-mobile.js"></script>
+    <script src="src/js/component/topbar-mobile.js"></script>
     <script src="src/js/req-permisson.js"></script>
     <script src="lib/js/materialize.min.js"></script>
     <script src="lib/js/idb.js"></script>
