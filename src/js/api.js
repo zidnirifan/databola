@@ -85,6 +85,7 @@ const getTeamDetails = (btn) => {
           let card = "";
           response.squad.forEach((player) => {
             card += `<tr>
+                      <td>${player.shirtNumber || "-"}</td>
                       <td>${player.name || "-"}</td>
                       <td>${player.position || "-"}</td>
                       <td>${player.nationality || "-"}</td>
@@ -110,6 +111,7 @@ const getTeamDetails = (btn) => {
       let card = "";
       response.squad.forEach((player) => {
         card += `<tr>
+                  <td>${player.shirtNumber || "-"}</td>
                   <td>${player.name || "-"}</td>
                   <td>${player.position || "-"}</td>
                   <td>${player.nationality || "-"}</td>
@@ -183,6 +185,7 @@ const details = (response) => {
                 <table>
                   <thead>
                     <tr>
+                      <th>#</th>
                       <th>Name</th>
                       <th>Pos</th>
                       <th>Nat</th>
@@ -237,10 +240,11 @@ const getSavedTeamsDetails = (selector) => {
     let card = "";
     response.squad.forEach((player) => {
       card += `<tr>
-                      <td>${player.name || "-"}</td>
-                      <td>${player.position || "-"}</td>
-                      <td>${player.nationality || "-"}</td>
-                    </tr>`;
+          <td>${player.shirtNumber || "-"}</td>
+          <td>${player.name || "-"}</td>
+          <td>${player.position || "-"}</td>
+          <td>${player.nationality || "-"}</td>
+        </tr>`;
     });
     document.querySelector(".player-list").innerHTML = card;
 
