@@ -44,4 +44,4 @@ class navDesktop extends HTMLElement {
   }
 }
 
-customElements.define("nav-destop", navDesktop);
+customElements.define("nav-desktop", navDesktop);
