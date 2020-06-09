@@ -26,21 +26,9 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
             itemList.innerHTML = card;
 
             if (urlKey === "teams") {
-              const button = document.querySelectorAll(".team-item");
-              button.forEach((btn) => {
+              document.querySelectorAll(".team-item").forEach((btn) => {
                 btn.addEventListener("click", function () {
-                  document.querySelector(
-                    ".fixed-action-btn"
-                  ).innerHTML = `<a class="btn-floating btn-large red" id="save">
-                  <i class="large material-icons">save</i>
-                  </a>`;
-                  const item = getTeamDetails(this);
-                  const save = document.getElementById("save");
-                  save.addEventListener("click", function () {
-                    item.then(function (team) {
-                      saveForLater(team);
-                    });
-                  });
+                  getTeamDetails(this);
                 });
               });
             }
@@ -72,21 +60,9 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
       itemList.innerHTML = card;
 
       if (urlKey === "teams") {
-        const button = document.querySelectorAll(".team-item");
-        button.forEach((btn) => {
+        document.querySelectorAll(".team-item").forEach((btn) => {
           btn.addEventListener("click", function () {
-            document.querySelector(
-              ".fixed-action-btn"
-            ).innerHTML = `<a class="btn-floating btn-large red" id="save">
-            <i class="large material-icons">save</i>
-            </a>`;
-            const item = getTeamDetails(this);
-            const save = document.getElementById("save");
-            save.addEventListener("click", function () {
-              item.then(function (team) {
-                saveForLater(team);
-              });
-            });
+            getTeamDetails(this);
           });
         });
       }
@@ -95,60 +71,65 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
 
 const getTeamDetails = (btn) => {
   document.querySelector("#body-content").innerHTML = "";
-  return new Promise(function (resolve, reject) {
-    const idTeam = btn.dataset.idteam;
-    window.location.hash += `/${idTeam}`;
+  const idTeam = btn.dataset.idteam;
+  window.location.hash += `/${idTeam}`;
 
-    if ("caches" in window) {
-      caches.match(`${baseUrl}/teams/${idTeam}`).then(function (response) {
-        if (response) {
-          response.json().then(function (response) {
-            const teamDetails = details(response);
+  if ("caches" in window) {
+    caches.match(`${baseUrl}/teams/${idTeam}`).then(function (response) {
+      if (response) {
+        response.json().then(function (response) {
+          const teamDetails = details(response);
 
-            document.querySelector("#body-content").innerHTML = teamDetails;
+          document.querySelector("#body-content").innerHTML = teamDetails;
 
-            let card = "";
-            response.squad.forEach((player) => {
-              card += `<tr>
+          let card = "";
+          response.squad.forEach((player) => {
+            card += `<tr>
                       <td>${player.name || "-"}</td>
                       <td>${player.position || "-"}</td>
                       <td>${player.nationality || "-"}</td>
                     </tr>`;
-            });
-            document.querySelector(".player-list").innerHTML = card;
-            resolve(response);
           });
-        }
-      });
-    }
+          document.querySelector(".player-list").innerHTML = card;
+        });
+      }
+    });
+  }
 
-    fetch(`${baseUrl}/teams/${idTeam}`, {
-      headers: {
-        "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        const teamDetails = details(response);
+  fetch(`${baseUrl}/teams/${idTeam}`, {
+    headers: {
+      "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
+    },
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      const teamDetails = details(response);
 
-        document.querySelector("#body-content").innerHTML = teamDetails;
+      document.querySelector("#body-content").innerHTML = teamDetails;
 
-        let card = "";
-        response.squad.forEach((player) => {
-          card += `<tr>
+      let card = "";
+      response.squad.forEach((player) => {
+        card += `<tr>
                   <td>${player.name || "-"}</td>
                   <td>${player.position || "-"}</td>
                   <td>${player.nationality || "-"}</td>
                 </tr>`;
-        });
-        document.querySelector(".player-list").innerHTML = card;
-        resolve(response);
       });
-  });
+      document.querySelector(".player-list").innerHTML = card;
+
+      document.querySelector(
+        ".fixed-action-btn"
+      ).innerHTML = `<a class="btn-floating btn-medium red" id="save">
+        <i class="large material-icons">favorite</i>
+        </a>`;
+      document
+        .querySelector("#save")
+        .addEventListener("click", () => saveForLater(response));
+    });
 };
 
 const details = (response) => {
-  return `<div class="row">
+  return `<div class="row" id="team-details" data-idTeam="${response.id}">
             <div class="col s12">
               <div class="card no-shadow row">
                 <div class="card-image col s12 m5">
@@ -235,29 +216,43 @@ function getSavedTeams() {
     });
     const itemList = document.querySelector(".team-list");
     itemList.innerHTML = card;
-    getSavedTeamsDetails(".team-item");
+
+    document.querySelectorAll(".team-item").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        getSavedTeamsDetails(this);
+      });
+    });
   });
 }
 
 const getSavedTeamsDetails = (selector) => {
-  document.querySelectorAll(selector).forEach((e) => {
-    e.addEventListener("click", function () {
-      const idTeam = Number(this.dataset.idteam);
-      getById(idTeam).then(function (response) {
-        const teamDetails = details(response);
+  // document.querySelectorAll(selector).forEach((e) => {
+  //   e.addEventListener("click", function () {
+  const idTeam = Number(selector.dataset.idteam);
+  getById(idTeam).then(function (response) {
+    const teamDetails = details(response);
 
-        document.querySelector("#body-content").innerHTML = teamDetails;
+    document.querySelector("#body-content").innerHTML = teamDetails;
 
-        let card = "";
-        response.squad.forEach((player) => {
-          card += `<tr>
+    let card = "";
+    response.squad.forEach((player) => {
+      card += `<tr>
                       <td>${player.name || "-"}</td>
                       <td>${player.position || "-"}</td>
                       <td>${player.nationality || "-"}</td>
                     </tr>`;
-        });
-        document.querySelector(".player-list").innerHTML = card;
-      });
     });
+    document.querySelector(".player-list").innerHTML = card;
+
+    document.querySelector(
+      ".fixed-action-btn"
+    ).innerHTML = `<a class="btn-floating btn-medium red" id="save">
+    <i class="large material-icons">favorite</i>
+    </a>`;
+    document
+      .querySelector("#save")
+      .addEventListener("click", () => deleteSaved(idTeam));
   });
+  //   });
+  // });
 };
