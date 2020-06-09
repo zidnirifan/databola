@@ -17,6 +17,7 @@ function saveForLater(team) {
     })
     .then(function () {
       console.log("Team berhasil di simpan.");
+      M.toast({ html: "Team Saved" });
     });
 }
 
@@ -30,6 +31,7 @@ function deleteSaved(team) {
     })
     .then(function () {
       console.log("Team berhasil dihapus");
+      M.toast({ html: "Team Deleted" });
     });
 }
 
