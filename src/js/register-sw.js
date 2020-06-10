@@ -1,14 +1,18 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(function () {
-        console.log("Pendaftaran ServiceWorker berhasil");
-      })
-      .catch(function () {
-        console.log("Pendaftaran ServiceWorker gagal");
-      });
-  });
+if (!("serviceWorker" in navigator)) {
+  console.log("Service worker tidak didukung browser ini.");
 } else {
-  console.log("ServiceWorker belum didukung browser ini.");
+  registerServiceWorker();
+  requestPermission();
+}
+// Register service worker
+function registerServiceWorker() {
+  return navigator.serviceWorker
+    .register("sw.js")
+    .then(function (registration) {
+      console.log("Registrasi service worker berhasil.");
+      return registration;
+    })
+    .catch(function (err) {
+      console.error("Registrasi service worker gagal.", err);
+    });
 }

@@ -13,11 +13,11 @@ webPush.setVapidDetails(
 );
 const pushSubscription = {
   endpoint:
-    "https://fcm.googleapis.com/fcm/send/dpWJZ4HM0Tk:APA91bF7MjP4YMG9jP4UI6oDOpz3nDGbUXxEp5B3yyUMSVNFRCm4RV6UtYr1xPRQNq8AdvaPTXv5JYDvUXbzpEyt9UZNoS1qnZIztpEXI3qFMv8IwErfiloafmINag8kKaGu8Ojjnm_s",
+    "https://fcm.googleapis.com/fcm/send/dq6biyREBrg:APA91bH9o4UbRGTPzNO8HMnRjO7rJpZEchjZcM5b6XWXcaValYuEGm4isqCXeTcmQ6BtTQTjoxGaOFsxD4uSUe2NBHyD8c6fQ2PhvyqS0GWWt6OGhN0fgrm-6V_wYx5ug7WpcOp8qihH",
   keys: {
     p256dh:
-      "BIfTq5IIr1pPk5wGXfjvEyIpo1wmTt2TRAyGjHX7thIjKtAjGcybYatnxhIZw+IKTIkBpI20YeYBxjLHI9622Ug=",
-    auth: "LSOJPj96duJ0iXHrkC0Iaw==",
+      "BJsOv5Dspnx2vA/UBssQZW8hn/b/s5ykUVtGJql+Ks91fpDkT6dTc+o7DdULIw/h/0FnSCkbe8h8gPe6OyYmJMY=",
+    auth: "+GusW+kUUOuFZuQ6sBK/tg==",
   },
 };
 const payload = "Selamat! Aplikasi Anda sudah dapat menerima push notifikasi!";
