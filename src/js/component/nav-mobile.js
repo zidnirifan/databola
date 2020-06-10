@@ -24,7 +24,7 @@ class navMobile extends HTMLElement {
           </div>
           <div class="col s3 center-align">
             <a href="#saved" title="Saved"
-              ><i class="menu-mobile saved material-icons">save</i></a
+              ><i class="menu-mobile saved material-icons">favorite</i></a
             >
           </div>
         </div>

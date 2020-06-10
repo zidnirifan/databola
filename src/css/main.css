@@ -15,6 +15,10 @@
   bottom: 60px !important;
 }
 
+#save {
+  cursor: pointer;
+}
+
 #standing-table,
 .match-list,
 .team-list,

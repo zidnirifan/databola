@@ -27,7 +27,7 @@ class navDesktop extends HTMLElement {
             </li>
             <li>
               <a href="#saved" title="Saved"
-                ><i class="menu-desktop saved material-icons">save</i></a
+                ><i class="menu-desktop saved material-icons">favorite</i></a
               >
             </li>
           </ul>
