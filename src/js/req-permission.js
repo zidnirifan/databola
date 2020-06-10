@@ -1,5 +1,5 @@
 if ("Notification" in window) {
-  requestPermission();
+  window.addEventListener("load", () => requestPermission());
 } else {
   console.error("Browser tidak mendukung notifikasi.");
 }
