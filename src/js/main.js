@@ -1,7 +1,7 @@
 import { requestPage, getSavedTeams } from "./api.js";
 
 const main = () => {
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     M.Dropdown.init(document.querySelectorAll(".dropdown-trigger"));
 
     M.Sidenav.init(document.querySelectorAll(".sidenav"));
@@ -66,7 +66,7 @@ const main = () => {
     });
   });
 
-  document.querySelectorAll("#dropdown1 a, .sidenav a").forEach(function (elm) {
+  document.querySelectorAll("#dropdown1 a, .sidenav a").forEach((elm) => {
     elm.addEventListener("click", function () {
       document.querySelector(
         ".dropdown-competition"
