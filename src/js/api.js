@@ -4,7 +4,6 @@ const baseUrl = "https://api.football-data.org/v2";
 
 const requestPage = (parentSelector, selector, urlKey, results, id) => {
   document.querySelector("#body-content").innerHTML = parentSelector;
-  document.querySelector(".fixed-action-btn").innerHTML = "";
 
   if ("caches" in window) {
     caches.match(`${baseUrl}/competitions/${id}/${urlKey}`).then((response) => {
@@ -96,7 +95,6 @@ function getSavedTeams(results) {
   document.querySelector(
     "#body-content"
   ).innerHTML = `<div class="row team-list"><div>`;
-  document.querySelector(".fixed-action-btn").innerHTML = "";
   db.getAll().then(function (response) {
     const items = response;
     let card = "";
