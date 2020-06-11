@@ -2,14 +2,17 @@ import db from "./db.js";
 
 const baseUrl = "https://api.football-data.org/v2";
 
-const requestPage = (parentSelector, selector, urlKey, results, id) => {
-  document.querySelector("#body-content").innerHTML = parentSelector;
+const requestPage = (container, selector, urlKey, results, id) => {
+  // loading animation
+  document.querySelector("#body-content").innerHTML = `<div class="progress">
+      <div class="indeterminate"></div>
+    </div>`;
 
   if ("caches" in window) {
     caches.match(`${baseUrl}/competitions/${id}/${urlKey}`).then((response) => {
       if (response) {
         response.json().then((response) => {
-          afterRequest(response, urlKey, results, selector);
+          afterRequest(response, urlKey, results, selector, container);
         });
       }
     });
@@ -22,11 +25,11 @@ const requestPage = (parentSelector, selector, urlKey, results, id) => {
   })
     .then((response) => response.json())
     .then((response) => {
-      afterRequest(response, urlKey, results, selector);
+      afterRequest(response, urlKey, results, selector, container);
     });
 };
 
-const afterRequest = (response, urlKey, results, selector) => {
+const afterRequest = (response, urlKey, results, selector, container) => {
   let items = response;
   if (urlKey === "matches") {
     items = response.matches;
@@ -39,6 +42,7 @@ const afterRequest = (response, urlKey, results, selector) => {
   items.forEach(function (e) {
     card += results(e);
   });
+  document.querySelector("#body-content").innerHTML = container;
   const itemList = document.querySelector(selector);
   itemList.innerHTML = card;
 
@@ -52,7 +56,10 @@ const afterRequest = (response, urlKey, results, selector) => {
 };
 
 const getTeamDetails = (btn) => {
-  document.querySelector("#body-content").innerHTML = "";
+  // loading animation
+  document.querySelector("#body-content").innerHTML = `<div class="progress">
+      <div class="indeterminate"></div>
+    </div>`;
   const idTeam = btn.dataset.idteam;
   window.location.hash += `/${idTeam}`;
 
