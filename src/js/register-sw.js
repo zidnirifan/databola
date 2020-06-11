@@ -1,3 +1,5 @@
+import requestPermission from "./req-permission.js";
+
 if (!("serviceWorker" in navigator)) {
   console.log("Service worker tidak didukung browser ini.");
 } else {

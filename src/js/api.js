@@ -1,3 +1,5 @@
+import db from "./db.js";
+
 const baseUrl = "https://api.football-data.org/v2";
 
 const requestPage = (parentSelector, selector, urlKey, results, id) => {
@@ -84,7 +86,7 @@ const afterGetDetails = (response) => {
   playerList(response);
 
   document.querySelector("#save").addEventListener("click", function () {
-    saveForLater(response);
+    db.saveForLater(response);
     this.innerHTML = "favorite";
     this.classList.add("red-text");
   });
@@ -95,7 +97,7 @@ function getSavedTeams(results) {
     "#body-content"
   ).innerHTML = `<div class="row team-list"><div>`;
   document.querySelector(".fixed-action-btn").innerHTML = "";
-  getAll().then(function (response) {
+  db.getAll().then(function (response) {
     const items = response;
     let card = "";
     items.forEach(function (response) {
@@ -127,7 +129,7 @@ const playerList = (response) => {
 
 const getSavedTeamsDetails = (selector) => {
   const idTeam = Number(selector.dataset.idteam);
-  getById(idTeam).then(function (response) {
+  db.getById(idTeam).then(function (response) {
     const teamDetails = details(response);
 
     document.querySelector("#body-content").innerHTML = teamDetails;
@@ -138,7 +140,7 @@ const getSavedTeamsDetails = (selector) => {
     save.innerHTML = "favorite";
     save.classList.add("red-text");
     save.addEventListener("click", () => {
-      deleteSaved(idTeam);
+      db.deleteSaved(idTeam);
       save.innerHTML = "favorite_border";
       save.classList.remove("red-text");
     });
@@ -213,3 +215,5 @@ const details = (response) => {
             </div>
           </div>`;
 };
+
+export { requestPage, getSavedTeams };

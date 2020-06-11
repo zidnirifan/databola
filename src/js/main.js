@@ -1,24 +1,93 @@
-document.addEventListener("DOMContentLoaded", function () {
-  M.Dropdown.init(document.querySelectorAll(".dropdown-trigger"));
+import { requestPage, getSavedTeams } from "./api.js";
 
-  M.Sidenav.init(document.querySelectorAll(".sidenav"));
-  const instance = M.Sidenav.getInstance(document.querySelector(".sidenav"));
-  document.querySelector(".sidenav").addEventListener("click", () => {
-    instance.close();
+const main = () => {
+  document.addEventListener("DOMContentLoaded", function () {
+    M.Dropdown.init(document.querySelectorAll(".dropdown-trigger"));
+
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+    const instance = M.Sidenav.getInstance(document.querySelector(".sidenav"));
+    document.querySelector(".sidenav").addEventListener("click", () => {
+      instance.close();
+    });
   });
-});
 
-// document.querySelectorAll(".menu-mobile").forEach((e) => {
-//   e.addEventListener("click", () => {
-//     navActive(e, "active");
-//   });
-// });
+  if (page === "") {
+    document.addEventListener("DOMContentLoaded", () => standings.request());
+  } else if (page === "standings") {
+    document.addEventListener("DOMContentLoaded", () => standings.request());
+  } else if (page === "match") {
+    document.addEventListener("DOMContentLoaded", () => {
+      match.request();
+      navActive(".menu-mobile.match", "active");
+      navActive(".menu-desktop.match", "active-desktop");
+    });
+  } else if (page === "teams") {
+    document.addEventListener("DOMContentLoaded", () => {
+      teams.request();
+      navActive(".menu-mobile.teams", "active");
+      navActive(".menu-desktop.teams", "active-desktop");
+    });
+  } else if (page === "saved") {
+    document.addEventListener("DOMContentLoaded", () => {
+      getSavedTeams(teams.results);
+      navActive(".menu-mobile.saved", "active");
+      navActive(".menu-desktop.saved", "active-desktop");
+    });
+  }
+  document
+    .querySelector(".brand-logo")
+    .addEventListener("click", () => standings.request());
+  document.querySelectorAll(".standings").forEach((elm) => {
+    elm.addEventListener("click", () => {
+      standings.request();
+      navActive(".menu-mobile.standings", "active");
+      navActive(".menu-desktop.standings", "active-desktop");
+    });
+  });
+  document.querySelectorAll(".match").forEach((elm) => {
+    elm.addEventListener("click", () => {
+      match.request();
+      navActive(".menu-mobile.match", "active");
+      navActive(".menu-desktop.match", "active-desktop");
+    });
+  });
+  document.querySelectorAll(".teams").forEach((elm) => {
+    elm.addEventListener("click", () => {
+      teams.request();
+      navActive(".menu-mobile.teams", "active");
+      navActive(".menu-desktop.teams", "active-desktop");
+    });
+  });
+  document.querySelectorAll(".saved").forEach((elm) => {
+    elm.addEventListener("click", () => {
+      getSavedTeams(teams.results);
+      navActive(".menu-mobile.saved", "active");
+      navActive(".menu-desktop.saved", "active-desktop");
+    });
+  });
 
-// document.querySelectorAll(".menu-desktop").forEach((e) => {
-//   e.addEventListener("click", () => {
-//     navActive(e, "active-desktop");
-//   });
-// });
+  document.querySelectorAll("#dropdown1 a, .sidenav a").forEach(function (elm) {
+    elm.addEventListener("click", function () {
+      document.querySelector(
+        ".dropdown-competition"
+      ).innerHTML = this.innerHTML;
+      document.querySelector(
+        "#top-bar-mobile .brand-logo"
+      ).innerHTML = this.innerHTML;
+      competitionId = this.dataset.idcompetition;
+      const page = window.location.hash.substr(1);
+      if (page === "") {
+        standings.request();
+      } else if (page === "standings") {
+        standings.request();
+      } else if (page === "match") {
+        match.request();
+      } else if (page === "teams") {
+        teams.request();
+      }
+    });
+  });
+};
 
 const navActive = (element, className) => {
   document.querySelector(`.${className}`).classList.remove(className);
@@ -31,81 +100,6 @@ const navActive = (element, className) => {
 };
 
 const page = window.location.hash.substr(1);
-
-if (page === "") {
-  document.addEventListener("DOMContentLoaded", () => standings.request());
-} else if (page === "standings") {
-  document.addEventListener("DOMContentLoaded", () => standings.request());
-} else if (page === "match") {
-  document.addEventListener("DOMContentLoaded", () => {
-    match.request();
-    navActive(".menu-mobile.match", "active");
-    navActive(".menu-desktop.match", "active-desktop");
-  });
-} else if (page === "teams") {
-  document.addEventListener("DOMContentLoaded", () => {
-    teams.request();
-    navActive(".menu-mobile.teams", "active");
-    navActive(".menu-desktop.teams", "active-desktop");
-  });
-} else if (page === "saved") {
-  document.addEventListener("DOMContentLoaded", () => {
-    getSavedTeams(teams.results);
-    navActive(".menu-mobile.saved", "active");
-    navActive(".menu-desktop.saved", "active-desktop");
-  });
-}
-document
-  .querySelector(".brand-logo")
-  .addEventListener("click", () => standings.request());
-document.querySelectorAll(".standings").forEach((elm) => {
-  elm.addEventListener("click", () => {
-    standings.request();
-    navActive(".menu-mobile.standings", "active");
-    navActive(".menu-desktop.standings", "active-desktop");
-  });
-});
-document.querySelectorAll(".match").forEach((elm) => {
-  elm.addEventListener("click", () => {
-    match.request();
-    navActive(".menu-mobile.match", "active");
-    navActive(".menu-desktop.match", "active-desktop");
-  });
-});
-document.querySelectorAll(".teams").forEach((elm) => {
-  elm.addEventListener("click", () => {
-    teams.request();
-    navActive(".menu-mobile.teams", "active");
-    navActive(".menu-desktop.teams", "active-desktop");
-  });
-});
-document.querySelectorAll(".saved").forEach((elm) => {
-  elm.addEventListener("click", () => {
-    getSavedTeams(teams.results);
-    navActive(".menu-mobile.saved", "active");
-    navActive(".menu-desktop.saved", "active-desktop");
-  });
-});
-
-document.querySelectorAll("#dropdown1 a, .sidenav a").forEach(function (elm) {
-  elm.addEventListener("click", function () {
-    document.querySelector(".dropdown-competition").innerHTML = this.innerHTML;
-    document.querySelector(
-      "#top-bar-mobile .brand-logo"
-    ).innerHTML = this.innerHTML;
-    competitionId = this.dataset.idcompetition;
-    const page = window.location.hash.substr(1);
-    if (page === "") {
-      standings.request();
-    } else if (page === "standings") {
-      standings.request();
-    } else if (page === "match") {
-      match.request();
-    } else if (page === "teams") {
-      teams.request();
-    }
-  });
-});
 
 let competitionId = "PL";
 
@@ -198,3 +192,5 @@ const teams = {
     requestPage(this.page, ".team-list", "teams", this.results, competitionId);
   },
 };
+
+export default main;

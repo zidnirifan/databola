@@ -1,3 +1,5 @@
+import urlBase64ToUint8Array from "./uint8Array.js";
+
 function requestPermission() {
   navigator.serviceWorker.ready.then(function () {
     if (!("Notification" in window)) {
@@ -59,16 +61,4 @@ function requestPermission() {
   });
 }
 
-// function showNotifikasiSederhana() {
-//   const title = "Notifikasi Sederhana";
-//   const options = {
-//     body: "Ini adalah konten notifikasi. \nBisa menggunakan baris baru.",
-//   };
-//   if (Notification.permission === "granted") {
-//     navigator.serviceWorker.ready.then(function (registration) {
-//       registration.showNotification(title, options);
-//     });
-//   } else {
-//     console.error("FItur notifikasi tidak diijinkan.");
-//   }
-// }
+export default requestPermission;
