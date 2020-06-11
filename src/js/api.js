@@ -91,6 +91,7 @@ const afterGetDetails = (response) => {
 
   playerList(response);
 
+  // save button
   document.querySelector("#save").addEventListener("click", function () {
     db.saveForLater(response);
     this.innerHTML = "favorite";
@@ -131,6 +132,7 @@ const getSavedTeamsDetails = (selector) => {
 
     playerList(response);
 
+    // delete button
     const save = document.querySelector("#save");
     save.innerHTML = "favorite";
     save.classList.add("red-text");
