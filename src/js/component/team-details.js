@@ -18,39 +18,38 @@ class TeamDetails extends HTMLElement {
                 <div class="card-image col s12 m5">
                   <img
                     src="${this.src.replace(/^http:\/\//i, "https://")}" 
-                    alt="${this.name || "-"}"
+                    alt="${this.name}" 
+                    onerror="this.src = '/assets/images/image-error.svg'"
                   />
                 </div>
                 <div class="card-content no-padding col s12 m7">
                   <h4>
                     <i class="material-icons" id="save">favorite_border</i>
-                    <a class="club-title black-text" href="${
-                      this.website || "-"
-                    }"
-                      >${this.name || "-"} (${this.tla || "-"})</a
+                    <a class="club-title black-text" href="${this.website}"
+                      >${this.name} (${this.tla})</a
                     >
                   </h4>
                   <table class="team-info">
                     <tbody>
                       <tr>
                         <td>Founded :</td>
-                        <td>${this.founded || "-"}</td>
+                        <td>${this.founded}</td>
                       </tr>
                       <tr>
                         <td>Nationality :</td>
-                        <td>${this.area || "-"}</td>
+                        <td>${this.area}</td>
                       </tr>
                       <tr>
                         <td>Address :</td>
-                        <td>${this.address || "-"}</td>
+                        <td>${this.address}</td>
                       </tr>
                       <tr>
                         <td>Venue :</td>
-                        <td>${this.venue || "-"}</td>
+                        <td>${this.venue}</td>
                       </tr>
                       <tr>
                         <td>Phone :</td>
-                        <td>${this.phone || "-"}</td>
+                        <td>${this.phone}</td>
                       </tr>
                     </tbody>
                   </table>

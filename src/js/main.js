@@ -110,7 +110,8 @@ const standings = {
       <td>
         <img
         src="${results.team.crestUrl.replace(/^http:\/\//i, "https://")}"
-        alt="${results.team.name} logo"
+        alt="${results.team.name} logo" 
+        onerror="this.src = '/assets/images/image-error.svg'"
         />
         </td>
         <td>${results.team.name}</td>

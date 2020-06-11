@@ -144,13 +144,13 @@ const details = (response) => {
           id="${response.id}" 
           src="${response.crestUrl}" 
           name="${response.name}" 
-          website="${response.website}" 
-          tla="${response.tla}" 
-          founded="${response.founded}" 
-          area="${response.area.name}" 
-          address="${response.address}" 
-          venue="${response.venue}" 
-          phone="${response.phone}">
+          website="${response.website || "-"}" 
+          tla="${response.tla || "-"}" 
+          founded="${response.founded || "-"}" 
+          area="${response.area.name || "-"}" 
+          address="${response.address || "-"}" 
+          venue="${response.venue || "-"}" 
+          phone="${response.phone || "-"}">
           </team-details>`;
 };
 

@@ -9,7 +9,8 @@ class TeamItem extends HTMLElement {
               <div class="team-image center-align">
                 <img
                   src="${this.src.replace(/^http:\/\//i, "https://")}"
-                  alt="${this.name} logo"
+                  alt="${this.name} logo" 
+                  onerror="this.src = '/assets/images/image-error.svg'"
                 />
               </div>
               <h6 class="center-align">${this.name}</h6>
