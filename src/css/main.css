@@ -11,10 +11,6 @@
   height: 65px !important;
 }
 
-.fixed-action-btn {
-  bottom: 60px !important;
-}
-
 #save,
 .team-item {
   cursor: pointer;
