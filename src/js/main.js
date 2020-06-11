@@ -146,22 +146,13 @@ const standings = {
 
 const match = {
   results: (results) => {
-    return `<div class="match-container col l6 s12 row">
-    <div class="match-item z-depth-1 col s12">
-      <div class="col s4">${results.homeTeam.name}</div>
-      <div class="col s4 center-align">
-        <div>${results.score.fullTime.homeTeam || "-"} VS ${
-      results.score.fullTime.awayTeam || "-"
-    }
-    </div>
-        <div class="date grey-text text-darken-2">${results.utcDate.substr(
-          0,
-          10
-        )}</div>
-      </div>
-      <div class="col s4 right-align">${results.awayTeam.name}</div>
-    </div>
-  </div>`;
+    return `<match-item 
+            homeTeam="${results.homeTeam.name}" 
+            scoreHome="${results.score.fullTime.homeTeam || "-"}" 
+            scoreAway="${results.score.fullTime.awayTeam || "-"}" 
+            date="${results.utcDate}" 
+            awayTeam="${results.awayTeam.name}">
+            </match-item>`;
   },
   page: `<div class="row match-list"></div>`,
   request() {
@@ -177,15 +168,11 @@ const match = {
 
 const teams = {
   results: (results) => {
-    return `<div class="team-item col l2 m3 s4" data-idTeam="${results.id}">
-              <div class="team-image center-align">
-                <img
-                  src="${results.crestUrl.replace(/^http:\/\//i, "https://")}"
-                  alt="${results.name} logo"
-                />
-              </div>
-              <h6 class="center-align">${results.name}</h6>
-            </div>`;
+    return `<team-item 
+            src="${results.crestUrl}" 
+            id="${results.id}" 
+            name="${results.name}">
+            </team-item>`;
   },
   page: `<div class="row team-list"><div>`,
   request() {
