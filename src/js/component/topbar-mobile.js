@@ -1,4 +1,4 @@
-class topbarMobile extends HTMLElement {
+class TopbarMobile extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `<nav id="top-bar-mobile" class="hide-on-large-only green darken-3">
         <div class="nav-wrapper container">
@@ -19,4 +19,4 @@ class topbarMobile extends HTMLElement {
   }
 }
 
-customElements.define("topbar-mobile", topbarMobile);
+customElements.define("topbar-mobile", TopbarMobile);

@@ -1,4 +1,4 @@
-class navMobile extends HTMLElement {
+class NavMobile extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `<nav
         id="nav-mobile"
@@ -32,4 +32,4 @@ class navMobile extends HTMLElement {
   }
 }
 
-customElements.define("nav-mobile", navMobile);
+customElements.define("nav-mobile", NavMobile);

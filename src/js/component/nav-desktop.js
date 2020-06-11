@@ -1,4 +1,4 @@
-class navDesktop extends HTMLElement {
+class NavDesktop extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `<nav class="green darken-3 hide-on-med-and-down">
         <div class="container">
@@ -44,4 +44,4 @@ class navDesktop extends HTMLElement {
   }
 }
 
-customElements.define("nav-desktop", navDesktop);
+customElements.define("nav-desktop", NavDesktop);
