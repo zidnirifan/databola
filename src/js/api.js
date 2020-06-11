@@ -108,6 +108,9 @@ function getSavedTeams(results) {
     items.forEach(function (response) {
       card += results(response);
     });
+    if (card === "") {
+      card = "<h4 class='center-align'>No Favorite Team</h4>";
+    }
     const itemList = document.querySelector(".team-list");
     itemList.innerHTML = card;
 
