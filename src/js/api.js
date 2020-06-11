@@ -153,72 +153,18 @@ const getSavedTeamsDetails = (selector) => {
 };
 
 const details = (response) => {
-  return `<div class="row" id="team-details" data-idTeam="${response.id}">
-            <div class="col s12">
-              <div class="card no-shadow row">
-                <div class="card-image col s12 m5">
-                  <img
-                    src="${response.crestUrl.replace(
-                      /^http:\/\//i,
-                      "https://"
-                    )}" 
-                    alt="${response.name || "-"}"
-                  />
-                </div>
-                <div class="card-content no-padding col s12 m7">
-                  <h4>
-                    <i class="material-icons" id="save">favorite_border</i>
-                    <a class="club-title black-text" href="${
-                      response.website || "-"
-                    }"
-                      >${response.name || "-"} (${response.tla || "-"})</a
-                    >
-                  </h4>
-                  <table class="team-info">
-                    <tbody>
-                      <tr>
-                        <td>Founded :</td>
-                        <td>${response.founded || "-"}</td>
-                      </tr>
-                      <tr>
-                        <td>Nationality :</td>
-                        <td>${response.area.name || "-"}</td>
-                      </tr>
-                      <tr>
-                        <td>Address :</td>
-                        <td>${response.address || "-"}</td>
-                      </tr>
-                      <tr>
-                        <td>Venue :</td>
-                        <td>${response.venue || "-"}</td>
-                      </tr>
-                      <tr>
-                        <td>Phone :</td>
-                        <td>${response.phone || "-"}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <div class="col s12">
-              <div class="card squads no-shadow">
-                <h4>Squads</h4>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Name</th>
-                      <th>Pos</th>
-                      <th>Nat</th>
-                    </tr>
-                  </thead>
-                  <tbody class="player-list"></tbody>
-                </table>
-              </div>
-            </div>
-          </div>`;
+  return `<team-details 
+          id="${response.id}" 
+          src="${response.crestUrl}" 
+          name="${response.name}" 
+          website="${response.website}" 
+          tla="${response.tla}" 
+          founded="${response.founded}" 
+          area="${response.area.name}" 
+          address="${response.address}" 
+          venue="${response.venue}" 
+          phone="${response.phone}">
+          </team-details>`;
 };
 
 export { requestPage, getSavedTeams };
