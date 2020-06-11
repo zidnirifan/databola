@@ -6,7 +6,7 @@ if (!("serviceWorker" in navigator)) {
   registerServiceWorker();
   requestPermission();
 }
-// Register service worker
+
 function registerServiceWorker() {
   return navigator.serviceWorker
     .register("sw.js")
