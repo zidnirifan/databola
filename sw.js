@@ -21,7 +21,7 @@ const urlsToCache = [
   "/lib/css/materialize.min.css",
   "/lib/js/materialize.min.js",
   "/lib/js/idb.js",
-  "/asstes/images/image-error.svg",
+  "/assets/images/image-error.svg",
   "/assets/icons/Material-Icons.woff2",
   "/assets/icons/icons.css",
   "/assets/icons/icon-72.png",
