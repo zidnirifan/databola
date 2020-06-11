@@ -119,19 +119,6 @@ function getSavedTeams(results) {
   });
 }
 
-const playerList = (response) => {
-  let card = "";
-  response.squad.forEach((player) => {
-    card += `<tr>
-                  <td>${player.shirtNumber || "-"}</td>
-                  <td>${player.name || "-"}</td>
-                  <td>${player.position || "-"}</td>
-                  <td>${player.nationality || "-"}</td>
-                </tr>`;
-  });
-  document.querySelector(".player-list").innerHTML = card;
-};
-
 const getSavedTeamsDetails = (selector) => {
   const idTeam = Number(selector.dataset.idteam);
   db.getById(idTeam).then(function (response) {
@@ -165,6 +152,19 @@ const details = (response) => {
           venue="${response.venue}" 
           phone="${response.phone}">
           </team-details>`;
+};
+
+const playerList = (response) => {
+  let card = "";
+  response.squad.forEach((player) => {
+    card += `<tr>
+                  <td>${player.shirtNumber || "-"}</td>
+                  <td>${player.name || "-"}</td>
+                  <td>${player.position || "-"}</td>
+                  <td>${player.nationality || "-"}</td>
+                </tr>`;
+  });
+  document.querySelector(".player-list").innerHTML = card;
 };
 
 export { requestPage, getSavedTeams };
