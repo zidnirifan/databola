@@ -18,20 +18,18 @@ const main = () => {
   } else if (page === "match") {
     document.addEventListener("DOMContentLoaded", () => {
       match.request();
-      navActive(".menu-mobile.match", "active");
-      navActive(".menu-desktop.match", "active-desktop");
+      navActive("match");
     });
   } else if (page === "teams") {
     document.addEventListener("DOMContentLoaded", () => {
       teams.request();
-      navActive(".menu-mobile.teams", "active");
-      navActive(".menu-desktop.teams", "active-desktop");
+      navActive("teams");
     });
   } else if (page === "saved") {
     document.addEventListener("DOMContentLoaded", () => {
       getSavedTeams(teams.results);
-      navActive(".menu-mobile.saved", "active");
-      navActive(".menu-desktop.saved", "active-desktop");
+      navActive("saved");
+      topbarSaved();
     });
   }
   document
@@ -40,29 +38,29 @@ const main = () => {
   document.querySelectorAll(".standings").forEach((elm) => {
     elm.addEventListener("click", () => {
       standings.request();
-      navActive(".menu-mobile.standings", "active");
-      navActive(".menu-desktop.standings", "active-desktop");
+      navActive("standings");
+      topbar();
     });
   });
   document.querySelectorAll(".match").forEach((elm) => {
     elm.addEventListener("click", () => {
       match.request();
-      navActive(".menu-mobile.match", "active");
-      navActive(".menu-desktop.match", "active-desktop");
+      navActive("match");
+      topbar();
     });
   });
   document.querySelectorAll(".teams").forEach((elm) => {
     elm.addEventListener("click", () => {
       teams.request();
-      navActive(".menu-mobile.teams", "active");
-      navActive(".menu-desktop.teams", "active-desktop");
+      navActive("teams");
+      topbar();
     });
   });
   document.querySelectorAll(".saved").forEach((elm) => {
     elm.addEventListener("click", () => {
       getSavedTeams(teams.results);
-      navActive(".menu-mobile.saved", "active");
-      navActive(".menu-desktop.saved", "active-desktop");
+      navActive("saved");
+      topbarSaved();
     });
   });
 
@@ -89,14 +87,26 @@ const main = () => {
   });
 };
 
-const navActive = (element, className) => {
-  document.querySelector(`.${className}`).classList.remove(className);
+const topbarSaved = () => {
+  document.querySelector("#top-bar-mobile .brand-logo").innerHTML =
+    "Favorite Teams";
+  document.querySelector(".sidenav-trigger").classList.add("hide");
+};
 
-  if (className === "active-desktop") {
-    document.querySelector(element).parentElement.classList.add(className);
-  } else {
-    document.querySelector(element).classList.add(className);
-  }
+const topbar = () => {
+  document.querySelector(
+    "#top-bar-mobile .brand-logo"
+  ).innerHTML = document.querySelector(".dropdown-competition").innerHTML;
+  document.querySelector(".sidenav-trigger").classList.remove("hide");
+};
+
+const navActive = (pageName) => {
+  document.querySelector(".active").classList.remove("active");
+  document.querySelector(`.menu-mobile.${pageName}`).classList.add("active");
+  document.querySelector(".active-desktop").classList.remove("active-desktop");
+  document
+    .querySelector(`.menu-desktop.${pageName}`)
+    .parentElement.classList.add("active-desktop");
 };
 
 const page = window.location.hash.substr(1);
