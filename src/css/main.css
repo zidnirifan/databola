@@ -16,6 +16,12 @@
   cursor: pointer;
 }
 
+#save {
+  font-size: 37px;
+  position: relative;
+  bottom: -7px;
+}
+
 #standing-table,
 .match-list,
 .team-list,
