@@ -25,7 +25,7 @@ class TeamDetails extends HTMLElement {
                 <div class="card-content no-padding col s12 m7">
                   <h4>
                     <i class="material-icons" id="save">favorite_border</i>
-                    <a class="club-title black-text" href="${this.website}"
+                    <a class="team-title black-text" href="${this.website}"
                       >${this.name} (${this.tla})</a
                     >
                   </h4>

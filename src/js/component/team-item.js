@@ -13,7 +13,7 @@ class TeamItem extends HTMLElement {
                   onerror="this.src = '/assets/images/image-error.svg'"
                 />
               </div>
-              <h6 class="center-align">${this.name}</h6>
+              <h6 class="center-align team-title">${this.name}</h6>
             </div>`;
   }
 }
