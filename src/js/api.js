@@ -1,6 +1,7 @@
 import db from "./db.js";
 
 const baseUrl = "https://api.football-data.org/v2";
+const apiKey = "dc6ecbe5da084040b9bd5d42e6eb0a42";
 
 const requestPage = (container, selector, urlKey, results, id) => {
   // loading animation
@@ -20,7 +21,7 @@ const requestPage = (container, selector, urlKey, results, id) => {
 
   fetch(`${baseUrl}/competitions/${id}/${urlKey}`, {
     headers: {
-      "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
+      "X-Auth-Token": apiKey,
     },
   })
     .then((response) => response.json())
@@ -75,7 +76,7 @@ const getTeamDetails = (btn) => {
 
   fetch(`${baseUrl}/teams/${idTeam}`, {
     headers: {
-      "X-Auth-Token": "dc6ecbe5da084040b9bd5d42e6eb0a42",
+      "X-Auth-Token": apiKey,
     },
   })
     .then((response) => response.json())
