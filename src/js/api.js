@@ -62,7 +62,6 @@ const getTeamDetails = (btn) => {
       <div class="indeterminate"></div>
     </div>`;
   const idTeam = btn.dataset.idteam;
-  window.location.hash += `/${idTeam}`;
 
   if ("caches" in window) {
     caches.match(`${baseUrl}/teams/${idTeam}`).then((response) => {
