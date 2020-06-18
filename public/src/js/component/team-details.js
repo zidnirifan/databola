@@ -4,7 +4,7 @@ class TeamDetails extends HTMLElement {
     this.src = this.getAttribute("src");
     this.name = this.getAttribute("name");
     this.website = this.getAttribute("website");
-    this.tla = this.getAttribute("id");
+    this.tla = this.getAttribute("tla");
     this.founded = this.getAttribute("founded");
     this.area = this.getAttribute("area");
     this.address = this.getAttribute("address");
