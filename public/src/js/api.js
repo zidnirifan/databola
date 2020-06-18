@@ -27,7 +27,20 @@ const requestPage = (container, selector, urlKey, results, id) => {
     .then((response) => response.json())
     .then((response) => {
       afterRequest(response, urlKey, results, selector, container);
+    })
+    .catch((error) => {
+      errorHandling(error);
     });
+};
+
+const errorHandling = (error) => {
+  if (error.message === "Failed to fetch") {
+    M.toast({
+      html: "No internet/API limit",
+      displayLength: 1100,
+    });
+  }
+  return console.log(error.message);
 };
 
 const afterRequest = (response, urlKey, results, selector, container) => {
@@ -89,6 +102,9 @@ const getTeamDetails = (btn) => {
     .then((response) => response.json())
     .then((response) => {
       afterGetDetails(response);
+    })
+    .catch((error) => {
+      errorHandling(error);
     });
 };
 
