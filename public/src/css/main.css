@@ -12,7 +12,9 @@
 }
 
 #save,
-.team-item {
+.team-item,
+.team-title,
+.team-img {
   cursor: pointer;
 }
 

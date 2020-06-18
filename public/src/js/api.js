@@ -53,6 +53,14 @@ const afterRequest = (response, urlKey, results, selector, container) => {
         getTeamDetails(this);
       });
     });
+  } else if (urlKey === "standings") {
+    document
+      .querySelectorAll(".standing-item .team-title, .standing-item .team-img")
+      .forEach((btn) => {
+        btn.addEventListener("click", function () {
+          getTeamDetails(this.parentElement);
+        });
+      });
   }
 };
 

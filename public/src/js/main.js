@@ -115,17 +115,17 @@ let competitionId = "PL";
 
 const standings = {
   results: (results) => {
-    return `<tr class="standing-item">
+    return `<tr class="standing-item" data-idTeam="${results.team.id}">
       <td>${results.position}</td>
-      <td>
+      <td class="team-img">
         <img
         src="${results.team.crestUrl.replace(/^http:\/\//i, "https://")}"
         alt="${results.team.name} logo" 
         onerror="this.src = '/assets/images/image-error.svg'"
         />
-        </td>
-        <td>${results.team.name}</td>
-        <td>${results.playedGames}</td>
+      </td>
+      <td class="team-title">${results.team.name}</td>
+      <td>${results.playedGames}</td>
       <td>${results.won}</td>
       <td>${results.lost}</td>
       <td>${results.points}</td>
