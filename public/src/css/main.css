@@ -11,6 +11,10 @@
   height: 65px !important;
 }
 
+.brand-logo {
+  margin-top: 10px;
+}
+
 #save,
 .team-item,
 .team-title,

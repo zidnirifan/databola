@@ -2,7 +2,7 @@ class NavDesktop extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `<nav class="green darken-3 hide-on-med-and-down">
         <div class="container">
-          <a href="#standings" class="brand-logo">Data Bola</a>
+          <a href="#standings" class="brand-logo"><img src="https://storage.googleapis.com/logo-databola/logo.png" width="190"></a>
           <ul class="nav-desktop right">
             <li>
               <a class="dropdown-trigger" data-target="dropdown1"
